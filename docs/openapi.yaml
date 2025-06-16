@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: LMS API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /api/auth/login:
+    post:
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Auth token
+  /api/users:
+    get:
+      summary: List users
+      responses:
+        '200':
+          description: List of users
+    post:
+      summary: Create user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                role:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /api/courses:
+    get:
+      summary: List courses
+      responses:
+        '200':
+          description: Courses
+    post:
+      summary: Create course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /api/categories:
+    get:
+      summary: List categories
+      responses:
+        '200':
+          description: Categories
+    post:
+      summary: Create category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Created
+  /api/assignments:
+    get:
+      summary: List assignments
+      responses:
+        '200':
+          description: Assignments
+    post:
+      summary: Create assignment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                course_id:
+                  type: integer
+                title:
+                  type: string
+                description:
+                  type: string
+                due_date:
+                  type: string
+                  format: date
+      responses:
+        '201':
+          description: Created
+  /api/messages:
+    get:
+      summary: List messages
+      responses:
+        '200':
+          description: Messages
+    post:
+      summary: Send message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sender_id:
+                  type: integer
+                recipient_id:
+                  type: integer
+                content:
+                  type: string
+      responses:
+        '201':
+          description: Created
