@@ -15,6 +15,13 @@ frontend/     Aplicación React con Vite
 .github/      Flujos de trabajo de CI/CD
 ```
 
+## Perfiles de usuario
+
+- **Administrador:** gestiona todo el centro, crea usuarios, cursos y categorías.
+- **Docente:** publica contenidos y evaluaciones, comunica su progreso.
+- **Alumno:** accede a materiales y tareas, consulta calificaciones.
+- **Tutor/Familia:** revisa el progreso y se comunica con los docentes.
+
 ## Configuración rápida
 
 1. Instalar dependencias en ambos directorios:

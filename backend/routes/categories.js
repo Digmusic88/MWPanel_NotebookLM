@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT id, title, category_id FROM courses');
+    const { rows } = await pool.query('SELECT id, name FROM categories');
     res.json(rows);
   } catch (err) {
     res.json([]);
@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { title, category_id } = req.body;
-    const { rows } = await pool.query('INSERT INTO courses(title, category_id) VALUES($1, $2) RETURNING *', [title, category_id]);
+    const { name } = req.body;
+    const { rows } = await pool.query('INSERT INTO categories(name) VALUES($1) RETURNING *', [name]);
     res.status(201).json(rows[0]);
   } catch (err) {
     res.status(500).json({ error: 'db error' });
